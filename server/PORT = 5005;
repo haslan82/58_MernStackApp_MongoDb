@@ -1,0 +1,6 @@
+PORT = 5005;
+MONGO_URI =mongodb+srv://<haslan82>:<828200HRsk.>@cluster0.0vh1u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+mongodb+srv://berkant:Berkant1111@cluster0.4rjtxrs.mongodb.net/?retryWrites=true&w=majority
+
