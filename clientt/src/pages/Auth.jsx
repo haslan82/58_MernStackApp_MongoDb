@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
-
+import { loginAction, registerAction } from '../redux/actions/auth';
+import { useDispatch } from 'react-redux';
 const Auth = () => {
     const [signUp, setSignUp] = useState(true);
     const [authData, setAuthData] = useState({username:"",email:"",password:""});
+const dispatch = useDispatch();
+
+
+
 
     const onChangeFunc = (e)=>{
         setAuthData({...authData,[e.target.name]:e.target.value})
     }
 console.log("authData",authData);
+
+
+const authFunc =()=>{
+    if(signUp){
+        dispatch(registerAction(authData))
+    }else{
+        dispatch(loginAction(authData))
+    }
+}
+
     return (
         <div className='w-full h-screen bg-gray-100 flex items-center justify-center fixed top-0 right-0 bottom-0 z-50left-0'>
             <div className='w-1/3 bg-white p-3'>
@@ -22,7 +37,7 @@ console.log("authData",authData);
                  
                  
                 </div>
-                <div className='cursor-pointer hover:bg-indigo-800 bg-indigo-600 w-full p-2 text-center text-white'>
+                <div onClick={authFunc} className='cursor-pointer hover:bg-indigo-800 bg-indigo-600 w-full p-2 text-center text-white'>
                   {signUp?  "Kayıt Ol": "Giriş Yap"}
                 </div>
             </div>

@@ -1,11 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
+import { ToastContainer } from 'react-toastify';
+
+
 
 const App = () => {
   return (
-   <BrowserRouter>
+   <div>
+    <BrowserRouter>
    <Routes> 
      <Route path="/" element={<Home />} />
      <Route path="/auth" element={<Auth/>} />
@@ -13,6 +17,9 @@ const App = () => {
     
    </Routes>
    </BrowserRouter>
+
+<ToastContainer />
+   </div>
   )
 }
 
