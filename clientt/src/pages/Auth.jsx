@@ -24,7 +24,7 @@ const authFunc =()=>{
 }
 
     return (
-        <div className='w-full h-screen bg-gray-100 flex items-center justify-center fixed top-0 right-0 bottom-0 z-50left-0'>
+        <div className='w-full h-screen bg-gray-100 flex items-center justify-center '>
             <div className='w-1/3 bg-white p-3'>
                 <h1 className='text-2xl text-gray-700 text-indigo-600 font-bold'>{signUp ? "REGISTER" : "LOGIN"} </h1>
                 <div className='flex flex-col space-y-3 my-5'>

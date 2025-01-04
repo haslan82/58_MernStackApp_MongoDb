@@ -15,7 +15,8 @@ export default UseToken */
 import { useEffect, useState } from 'react';
 
 const UseToken = () => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState({ token: null });
+
 
   useEffect(() => {
     const storedToken = localStorage.getItem("auth");
@@ -24,7 +25,7 @@ const UseToken = () => {
         setToken(JSON.parse(storedToken)); // JSON parse işlemi kontrol ediliyor
       } catch (error) {
         console.error("Invalid token format:", error);
-        setToken(null); // Geçersiz bir token varsa null yap
+        setToken({ token: null }); // Geçersiz bir token varsa null yap
       }
     }
   }, []);
