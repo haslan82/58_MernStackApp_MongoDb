@@ -3,12 +3,14 @@ import { thunk } from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import authReducer from "./reducers/auth";
 import modalReducer from "./reducers/Modal";
+import postReducer from "./reducers/post";
 
 const initialState = {};
 
 const reducers = combineReducers({
-  auth : authReducer,
-  modal : modalReducer
+  auth: authReducer,
+  modal: modalReducer,
+  posts: postReducer,
 });
 
 const store = createStore(
@@ -16,6 +18,5 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(thunk))
 );
-
 
 export default store;

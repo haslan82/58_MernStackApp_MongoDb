@@ -16,8 +16,15 @@ const postReducer = (state ={ posts:[]}, action) => {
                     post._id === action.payload._id ? action.payload : post  //! 1:50. dakika
                 );
     
-            case "DELETE_POST":
-                return state.filter((post) => post._id !== action.payload);
+           /*  case "DELETE_POST":
+                return state.filter((post) => post._id !== action.payload); */
+
+                case "DELETE_POST":
+  return {
+    ...state,
+    posts: state.posts.filter((post) => post._id !== action.payload),
+  };
+
     
             default:
                 return state;

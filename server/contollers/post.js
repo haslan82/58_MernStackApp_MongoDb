@@ -11,7 +11,7 @@ const getPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   try {
-    const newPost = await PostSchema.create(res.body);
+    const newPost = await PostSchema.create(req.body);
     res.status(201).json(newPost);
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -30,14 +30,20 @@ const updatePost = async (req, res) => {
   }
 };
 
+
+/*  */
 const deletePost = async (req, res) => {
   try {
     const { id } = req.params;
-    const deletePost = await PostSchema.findByIdAndRemove(id);
-    res.status(200).json({ msg: "silme işlemi gerçekleşti" });
+    const deletePost = await PostSchema.findByIdAndDelete(id);
+    res.status(200).json({ data: deletePost, msg: "silme işlemi gerçekleşti" });
+
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
+
+
+
 
 module.exports = { getPosts, createPost, updatePost, deletePost };
