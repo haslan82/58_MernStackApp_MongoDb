@@ -1,34 +1,35 @@
-
-
-
-const postReducer = (state ={ posts:[]}, action) => {
-        switch (action.type) {
-            case "GET_POSTS":
-                return action.payload;
-    
-            case "CREATE_POST":
-                return {
-                    posts:[...state.posts, action.payload],
-                };
-    
-            case "UPDATE_POST":
-                return state.map((post) =>
-                    post._id === action.payload._id ? action.payload : post  //! 1:50. dakika
-                );
-    
-           /*  case "DELETE_POST":
-                return state.filter((post) => post._id !== action.payload); */
-
-                case "DELETE_POST":
-  return {
-    ...state,
-    posts: state.posts.filter((post) => post._id !== action.payload),
+const postReducer = (state = { posts: [] }, action) => {
+    switch (action.type) {
+      case "GET_POSTS":
+        return {
+          ...state,
+          posts: action.payload,
+        };
+  
+      case "CREATE_POST":
+        return {
+          ...state,
+          posts: [...state.posts, action.payload],
+        };
+  
+      case "UPDATE_POST":
+        return {
+          ...state,
+          posts: state.posts.map((post) =>
+            post._id === action.payload._id ? action.payload : post
+          ),
+        };
+  
+      case "DELETE_POST":
+        return {
+          ...state,
+          posts: state.posts.filter((post) => post._id !== action.payload),
+        };
+  
+      default:
+        return state;
+    }
   };
-
-    
-            default:
-                return state;
-        }
-    };
-
-    export default postReducer
+  
+  export default postReducer;
+  

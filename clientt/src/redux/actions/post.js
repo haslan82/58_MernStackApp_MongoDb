@@ -30,7 +30,7 @@ export const getPostsAction = () => async (dispatch) => {
 };
 
 
-export const createPostAction = (postData) => async (dispatch) => {
+/* export const createPostAction = (postData) => async (dispatch) => {
     try {
       const { data } = await axios.post(
         "http://localhost:5005/createPost",postData
@@ -55,9 +55,43 @@ export const createPostAction = (postData) => async (dispatch) => {
         // transition: Bounce,
       });
     }
+  }; */
+  
+
+
+  export const createPostAction = (postData) => async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5005/createPost",
+        postData
+      );
+  
+      if (response && response.data) {
+        dispatch({
+          type: "CREATE_POST",
+          payload: response.data,
+        });
+      } else {
+        throw new Error("Beklenmeyen yanıt yapısı");
+      }
+    } catch (error) {
+      console.error("Create Post Error:", error);
+      const errorMessage =
+        error.response?.data?.msg || "Bir hata oluştu. Lütfen tekrar deneyin.";
+      toast(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+      });
+    }
   };
   
-  export const updatePostSAction = (id, postData) => async (dispatch) => {
+
+
+
+
+
+
+  export const updatePostsAction = (id, postData) => async (dispatch) => {
     try {
       const { data } = await axios.patch(
         `http://localhost:5005/updatePost/${id}`,postData

@@ -9,14 +9,29 @@ const getPosts = async (req, res) => {
   }
 };
 
-const createPost = async (req, res) => {
+/* const createPost = async (req, res) => {
   try {
     const newPost = await PostSchema.create(req.body);
     res.status(201).json(newPost);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
+}; */
+
+
+const createPost = async (req, res) => {
+  try {
+    const newPost = await PostSchema.create(req.body);
+    res.status(201).json(newPost); // Başarılı
+  } catch (error) {
+    console.error("Create Post Error:", error.message);
+    res.status(500).json({ msg: "Post oluşturulamadı. Lütfen tekrar deneyin." });
+  }
 };
+
+
+
+
 
 const updatePost = async (req, res) => {
   try {
