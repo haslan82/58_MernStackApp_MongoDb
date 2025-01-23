@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use('/', authRouter);
 app.use('/', postRouter);
 
-const PORT =5005;  //process.env.PORT || 
+//const PORT =5005;  //process.env.PORT || 
 
 
 database();
